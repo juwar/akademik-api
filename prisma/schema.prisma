@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model kecakapan {
+  id_kecakapan   String @id @db.VarChar(10)
+  kode_matkul    String @db.VarChar(10)
+  type_kecakapan String @db.VarChar(100)
+}
+
+model kecakapan_siswa {
+  id           String @id @db.VarChar(10)
+  id_kecakapan String @db.VarChar(10)
+  nim          String @db.VarChar(20)
+}
+
+model mahasiswa {
+  nim        String @id @db.VarChar(20)
+  nama       String @db.VarChar(100)
+  prodi      String @db.VarChar(100)
+  pembimbing String @db.VarChar(100)
+  telpon     String @db.VarChar(15)
+  alamat     String @db.VarChar(200)
+}
+
+model mata_kuliah {
+  kode String @id @db.VarChar(10)
+  nama String @db.VarChar(100)
+  sks  Int
+}
+
+model nilai {
+  id_nilai    String @id @db.VarChar(10)
+  nim         String @db.VarChar(20)
+  kode_matkul String @db.VarChar(10)
+  semester    Int
+  nilai       String @db.VarChar(3)
+  bobot_nilai Int
+}
+
+model refleksi {
+  id_refleksi         String @id @db.VarChar(10)
+  nim                 String @db.VarChar(20)
+  refleksi_pembimbing String @db.VarChar(500)
+}

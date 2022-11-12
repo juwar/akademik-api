@@ -1,0 +1,26 @@
+###
+GET http://localhost:5000/mahasiswa
+
+###
+GET http://localhost:5000/mahasiswa/MH-635FEF9A37841
+
+###
+POST http://localhost:5000/mahasiswa/create
+Content-Type: application/json
+
+{
+    "nim": "MH-635FEF9A37551",
+    "nama": "Muhammad Juwar",
+    "prodi": "TI",
+    "pembimbing": "Ndak Tau",
+    "telpon": "08767867868",
+    "alamat": "Suruh"
+}
+
+###
+POST http://localhost:5000/mahasiswa/generate
+Content-Type: application/json
+
+{
+    "amount": 5
+}
