@@ -1,14 +1,14 @@
 import { PrismaClient } from "@prisma/client";
-import {generateName, generateString} from "./../utils/generatorUtils.js"
+import { generateName, generateString } from "./../utils/generatorUtils.js";
 
 const prisma = new PrismaClient();
 
 export const getMahasiswa = async (req, res) => {
   try {
     const response = await prisma.mahasiswa.findMany();
-    res.status(200).json(response);
+    res.status(200).json({ values: response, totalRows: response?.length });
   } catch (e) {
-    res.status(400).json({ msag: e.message });
+    res.status(404).json({ msag: e.message });
   }
 };
 
@@ -21,7 +21,7 @@ export const getMahasiswaById = async (req, res) => {
     });
     res.status(200).json(response);
   } catch (e) {
-    res.status(400).json({ msag: e.message });
+    res.status(404).json({ msag: e.message });
   }
 };
 
